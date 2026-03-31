@@ -3,49 +3,36 @@ let computerScore = 0;
 
 function getComputerChoice() {
   let number = Math.random();
-  if (number < 0.33) {
-    return "rock";
-  } else if (number < 0.66) {
-    return "paper";
-  } else {
-    return "scissors";
-  }
+  if (number < 0.33) return "rock";
+  else if (number < 0.66) return "paper";
+  else return "scissors";
 }
-console.log(getComputerChoice())
-
 
 function getHumanChoice() {
-  let userInput = prompt("What's is your choice?");
-  return userInput;
+  return prompt("What's your choice?");
 }
-console.log(getHumanChoice())
-
 
 function playRound(humanChoice, computerChoice) {
- humanChoice = humanChoice.toLowerCase();
+  if (!humanChoice) return "Invalid input";
+
+  humanChoice = humanChoice.toLowerCase();
 
   if (humanChoice === computerChoice) {
     return "Draw";
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
     humanScore++;
-    return `You win`;
+    return `You win! ${humanChoice} beats ${computerChoice}`;
   } else if (humanChoice === "paper" && computerChoice === "rock") {
     humanScore++;
-    return `You win`;
+    return `You win! ${humanChoice} beats ${computerChoice}`;
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
     humanScore++;
-    return `You win`;
+    return `You win! ${humanChoice} beats ${computerChoice}`;
   } else {
     computerScore++;
-    return `You lose`;
+    return `You lose! ${computerChoice} beats ${humanChoice}`;
   }
 }
- // console.log(playRound())
- let humanSelection = getHumanChoice();
- let = computerSelection = getComputerChoice();
-
- console.log(playRound(humanSelection, computerSelection));
-
 
 function playGame() {
   for (let i = 0; i < 5; i++) {
@@ -60,4 +47,4 @@ function playGame() {
   console.log("Computer:", computerScore);
 }
 
-playGame()
+playGame();
